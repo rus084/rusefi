@@ -16,6 +16,9 @@
 #include "table_helper.h"
 #include "engine.h"
 
+extern engine_configuration_s *engineConfiguration;
+extern board_configuration_s *boardConfiguration;
+
 void findTriggerPosition(engine_configuration_s const *engineConfiguration, trigger_shape_s * s,
 		event_trigger_position_s *position, float angleOffset);
 
@@ -53,6 +56,10 @@ void setTimingRpmBin(engine_configuration_s *engineConfiguration, float l, float
 void setTimingLoadBin(engine_configuration_s *engineConfiguration, float l, float r);
 
 void setSingleCoilDwell(engine_configuration_s *engineConfiguration);
+
+int engineNeedSkipStokeT(engine_configuration_s *engineConfiguration);
+#define engineNeedSkipStoke() engineNeedSkipStokeT(engineConfiguration)
+
 
 #ifdef __cplusplus
 }

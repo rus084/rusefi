@@ -28,6 +28,9 @@
 #include "OutputSignalList.h"
 #include "trigger_decoder.h"
 #include "event_registry.h"
+#include "rpm_calculator.h"
+
+extern Engine engine;
 
 /*
  * default Volumetric Efficiency
@@ -375,4 +378,14 @@ void setTimingLoadBin(engine_configuration_s *engineConfiguration, float l, floa
 int isInjectionEnabled(engine_configuration_s *engineConfiguration) {
 	// todo: is this worth a method? should this be inlined?
 	return engineConfiguration->isInjectionEnabled;
+}
+
+int engineNeedSkipStokeT(engine_configuration_s *engineConfiguration) {
+   if (getRpm() > engineConfiguration->rpmHardLimit) {
+      return true;
+   }
+   // todo: add damageVoltage
+   // todo: probably add brakeRpmLimit
+   // todo: add sportMode to turn off this function (or part of function)
+   return false;
 }

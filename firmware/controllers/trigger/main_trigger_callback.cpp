@@ -87,6 +87,8 @@ static void handleFuelInjectionEvent(MainTriggerCallback *mainTriggerCallback, A
 		return;
 	}
 
+
+
 	float delay = getOneDegreeTimeMs(rpm) * event->position.angleOffset;
 
 //	if (isCranking())
@@ -246,7 +248,7 @@ void onTriggerEvent(trigger_event_e ckpSignalType, int eventIndex, MainTriggerCa
 		warning(OBD_Camshaft_Position_Sensor_Circuit_Range_Performance, "noisy trigger");
 		return;
 	}
-	if (rpm > mainTriggerCallback->engineConfiguration->rpmHardLimit) {
+	if (engineNeedSkipStoke()) {
 		warning(OBD_PCM_Processor_Fault, "skipping stroke due to rpm=%d", rpm);
 		return;
 	}
