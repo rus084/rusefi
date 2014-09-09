@@ -30,4 +30,11 @@ void setGy6139qmbDefaultEngineConfiguration(engine_configuration_s *engineConfig
 	engineConfiguration->triggerConfig.customSkippedToothCount = 0;
 	engineConfiguration->triggerConfig.customIsSynchronizationNeeded = false;
 //todo	engineConfiguration2->triggerShape.needSecondTriggerInput = false;
+
+	// high temperature lamp
+	engineConfiguration->fanOnTemperature = 110;
+	engineConfiguration->fanOffTemperature = 100;
+
+	// still can't control
+	engineConfiguration->isIgnitionEnabled = false;
 }

@@ -2,7 +2,7 @@
  * siemensMC60.h
  *
  *  Created on: 20.05.2014
- *      Author: komp
+ *      Author: rus084
  */
 
 #ifndef SIEMENSMC60_H_

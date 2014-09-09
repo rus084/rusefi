@@ -57,7 +57,7 @@ void setTimingLoadBin(engine_configuration_s *engineConfiguration, float l, floa
 
 void setSingleCoilDwell(engine_configuration_s *engineConfiguration);
 
-int engineNeedSkipStokeT(engine_configuration_s *engineConfiguration);
+bool engineNeedSkipStokeT(engine_configuration_s *engineConfiguration);
 #define engineNeedSkipStoke() engineNeedSkipStokeT(engineConfiguration)
 
 

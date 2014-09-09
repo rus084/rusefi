@@ -380,12 +380,11 @@ int isInjectionEnabled(engine_configuration_s *engineConfiguration) {
 	return engineConfiguration->isInjectionEnabled;
 }
 
-int engineNeedSkipStokeT(engine_configuration_s *engineConfiguration) {
+bool engineNeedSkipStokeT(engine_configuration_s *engineConfiguration) {
    if (getRpm() > engineConfiguration->rpmHardLimit) {
       return true;
    }
-   // todo: add damageVoltage
-   // todo: probably add brakeRpmLimit
-   // todo: add sportMode to turn off this function (or part of function)
+
+
    return false;
 }
