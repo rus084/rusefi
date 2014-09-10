@@ -73,6 +73,9 @@ public class EngineState {
 //        SensorStats.start(Sensor.IAT, Sensor.INTAKE_AIR_WIDTH);
         SensorStats.start(Sensor.VREF, Sensor.VREF_WIDTH);
 
+        SensorStats.startStandardDeviation(Sensor.DWELL0, Sensor.DWELL0_SD);
+        SensorStats.startDelta(Sensor.INJECTOR_1_DWELL, Sensor.INJECTOR_2_DWELL, Sensor.INJ_1_2_DELTA);
+
         registerStringValueAction("adcfast_co", NOTHING);
         registerStringValueAction("adcfast_max", NOTHING);
         registerStringValueAction("adcfast_min", NOTHING);
