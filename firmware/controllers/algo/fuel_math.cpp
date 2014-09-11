@@ -41,6 +41,8 @@
 #include "accel_enrichment.h"
 #endif /* EFI_ACCEL_ENRICHMENT */
 
+#include "fuel_consumption_calculator.h"
+
 float getBaseFuel(Engine *engine, int rpm) {
 	if (engine->engineConfiguration->algorithm == LM_SPEED_DENSITY) {
 		return getSpeedDensityFuel(engine, rpm);
@@ -91,7 +93,11 @@ float getRunningFuel(float baseFuel, Engine *engine, int rpm) {
 	// todo: accelEnrichment
 #endif /* EFI_ACCEL_ENRICHMENT */
 
-	return baseFuel * cltCorrection * iatCorrection + injectorLag;
+	float fuel = baseFuel * cltCorrection * iatCorrection ;
+
+	refreshConsumption(fuel);
+
+	return fuel + injectorLag;
 }
 
 extern Engine engine;
